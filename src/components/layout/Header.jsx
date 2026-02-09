@@ -1,10 +1,12 @@
-﻿import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { brand } from "../../data/brand.js";
 import { nav } from "../../data/nav.js";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -13,10 +15,21 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileOpen]);
+
   return (
     <header
       className={[
-        "sticky top-0 z-50 border-b",
+        "sticky top-0 z-50 border-b backdrop-blur-sm",
         scrolled ? "bg-white border-black/10 shadow-soft" : "bg-white/90 border-transparent"
       ].join(" ")}
     >
@@ -49,14 +62,43 @@ export default function Header() {
           </nav>
 
           <div className="lg:hidden">
-            <NavLink
-              to="/contact"
-              className="rounded-full bg-navy-950 px-4 py-2 text-sm font-medium text-white hover:bg-navy-900 transition"
+            <button
+              type="button"
+              onClick={() => setMobileOpen((open) => !open)}
+              aria-expanded={mobileOpen}
+              aria-controls="mobile-nav"
+              className="rounded-full border border-black/15 px-4 py-2 text-sm font-medium text-ink transition hover:border-black/25"
             >
-              Contact
-            </NavLink>
+              {mobileOpen ? "Close" : "Menu"}
+            </button>
           </div>
         </div>
+      </div>
+
+      <div
+        id="mobile-nav"
+        className={[
+          "border-t border-black/10 px-4 py-3 lg:hidden",
+          mobileOpen ? "block bg-white" : "hidden"
+        ].join(" ")}
+      >
+        <nav className="mx-auto flex max-w-6xl flex-col gap-1">
+          {nav.map((n) => (
+            <NavLink
+              key={n.to}
+              to={n.to}
+              className={({ isActive }) =>
+                [
+                  "rounded-xl px-3 py-2 text-sm transition",
+                  isActive ? "bg-navy-950 text-white" : "text-ink/80 hover:bg-black/5 hover:text-ink"
+                ].join(" ")
+              }
+              end={n.to === "/"}
+            >
+              {n.label}
+            </NavLink>
+          ))}
+        </nav>
       </div>
 
       <div className="h-[2px] bg-gold-500" />

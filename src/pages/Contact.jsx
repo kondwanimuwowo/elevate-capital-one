@@ -1,23 +1,27 @@
-﻿import Page from "../components/ui/Page.jsx";
+import Page from "../components/ui/Page.jsx";
 import PageHero from "../components/ui/PageHero.jsx";
 import Section from "../components/ui/Section.jsx";
 import { brand } from "../data/brand.js";
 
 export default function Contact() {
+  const websiteHref = brand.contact.website.startsWith("http")
+    ? brand.contact.website
+    : `https://${brand.contact.website}`;
+
   return (
     <Page>
       <PageHero
         eyebrow="Contact"
-        title="Let’s talk"
+        title="Let's talk"
         subtitle="Reach out for partnerships, enquiries, and engagement discussions."
       />
 
       <Section eyebrow="Reach us" title="Contact details">
-        <div className="rounded-2xl bg-navy-950 px-6 py-10 text-white lg:px-10">
+        <div className="rounded-2xl bg-navy-950 px-6 py-8 text-white lg:px-10 lg:py-10">
           <div className="grid gap-8 lg:grid-cols-3">
-            <Item label="Phone" value={brand.contact.phone} />
-            <Item label="Email" value={brand.contact.email} />
-            <Item label="Website" value={brand.contact.website} />
+            <Item label="Phone" value={brand.contact.phone} href={`tel:${brand.contact.phone.replace(/\s+/g, "")}`} />
+            <Item label="Email" value={brand.contact.email} href={`mailto:${brand.contact.email}`} />
+            <Item label="Website" value={brand.contact.website} href={websiteHref} external />
           </div>
           <div className="mt-8 border-t border-white/15 pt-6 text-sm text-white/80">
             {brand.contact.address}
@@ -25,35 +29,40 @@ export default function Contact() {
 
           <div className="mt-8 grid gap-4 lg:grid-cols-2">
             <div>
-              <div className="text-xs uppercase tracking-[0.16em] text-white/60">Message</div>
+              <div className="text-xs uppercase tracking-[0.16em] text-white/60">Get in touch</div>
               <p className="mt-2 text-sm text-white/75">
-                This is a static contact section for now. When you’re ready, we can wire it to email, a CRM, or a backend endpoint.
+                Send us your details and we will follow up to discuss your needs.
               </p>
             </div>
 
-            <form
-              onSubmit={(e) => e.preventDefault()}
-              className="rounded-2xl bg-white/5 p-6"
-            >
-              <label className="block text-xs uppercase tracking-[0.16em] text-white/60">
+            <form onSubmit={(e) => e.preventDefault()} className="rounded-2xl bg-white/5 p-6">
+              <label htmlFor="contact-name" className="block text-xs uppercase tracking-[0.16em] text-white/60">
                 Full name
                 <input
+                  id="contact-name"
+                  name="name"
+                  type="text"
                   className="mt-2 w-full rounded-xl border border-white/15 bg-transparent px-4 py-3 text-sm text-white placeholder:text-white/40 outline-none focus:border-white/30"
                   placeholder="Your name"
                 />
               </label>
 
-              <label className="mt-4 block text-xs uppercase tracking-[0.16em] text-white/60">
+              <label htmlFor="contact-email" className="mt-4 block text-xs uppercase tracking-[0.16em] text-white/60">
                 Email
                 <input
+                  id="contact-email"
+                  name="email"
+                  type="email"
                   className="mt-2 w-full rounded-xl border border-white/15 bg-transparent px-4 py-3 text-sm text-white placeholder:text-white/40 outline-none focus:border-white/30"
                   placeholder="you@email.com"
                 />
               </label>
 
-              <label className="mt-4 block text-xs uppercase tracking-[0.16em] text-white/60">
+              <label htmlFor="contact-message" className="mt-4 block text-xs uppercase tracking-[0.16em] text-white/60">
                 Message
                 <textarea
+                  id="contact-message"
+                  name="message"
                   rows={4}
                   className="mt-2 w-full rounded-xl border border-white/15 bg-transparent px-4 py-3 text-sm text-white placeholder:text-white/40 outline-none focus:border-white/30"
                   placeholder="How can we help?"
@@ -62,9 +71,9 @@ export default function Contact() {
 
               <button
                 type="submit"
-                className="mt-5 w-full rounded-full bg-white px-5 py-2.5 text-sm font-medium text-navy-950 hover:bg-white/90 transition"
+                className="mt-5 w-full rounded-full bg-white px-5 py-2.5 text-sm font-medium text-navy-950 transition hover:bg-white/90"
               >
-                Send (placeholder)
+                Send message
               </button>
             </form>
           </div>
@@ -74,11 +83,18 @@ export default function Contact() {
   );
 }
 
-function Item({ label, value }) {
+function Item({ label, value, href, external = false }) {
   return (
     <div>
       <div className="text-xs uppercase tracking-[0.16em] text-white/60">{label}</div>
-      <div className="mt-2 text-base font-medium">{value}</div>
+      <a
+        className="mt-2 inline-block text-base font-medium text-white transition hover:text-gold-500"
+        href={href}
+        target={external ? "_blank" : undefined}
+        rel={external ? "noreferrer" : undefined}
+      >
+        {value}
+      </a>
     </div>
   );
 }

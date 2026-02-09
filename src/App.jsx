@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import SiteLayout from "./components/layout/SiteLayout.jsx";
@@ -14,6 +14,27 @@ import Contact from "./pages/Contact.jsx";
 import NotFound from "./pages/NotFound.jsx";
 export default function App() {
   const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "auto" });
+
+    const pageTitles = {
+      "/": "Home",
+      "/about": "About",
+      "/business-model": "Business Model",
+      "/services": "Services",
+      "/risk-compliance": "Risk & Compliance",
+      "/impact": "Impact",
+      "/insights": "Insights",
+      "/contact": "Contact"
+    };
+
+    const pageTitle =
+      location.pathname.startsWith("/insights/") ? "Insight" : pageTitles[location.pathname] || "Page";
+
+    document.title = `${pageTitle} | Elevate Capital`;
+  }, [location.pathname]);
+
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>

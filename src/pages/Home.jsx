@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <Page>
       <section className="relative">
-        <div className="mx-auto max-w-6xl px-4 pt-12 lg:pt-16">
+        <div className="mx-auto max-w-6xl px-4 py-10 lg:py-16">
           <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
             <div>
               <motion.div
@@ -75,7 +75,7 @@ export default function Home() {
                 <div className="mt-7 h-[2px] w-12 bg-gold-500" />
 
                 <div className="mt-5 text-sm text-white/75">
-                  Clean, modern, profile-inspired layout. No gradients. No gimmicks.
+                  A concise profile of our funding models, operating discipline, and risk posture.
                 </div>
 
                 <div className="pointer-events-none absolute -right-10 -top-10 h-44 w-44 rounded-full border border-white/10" />
@@ -85,7 +85,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="mx-auto mt-12 max-w-6xl px-4">
+        <div className="mx-auto mt-10 max-w-6xl px-4 lg:mt-14">
           <div className="h-px bg-black/10" />
         </div>
       </section>

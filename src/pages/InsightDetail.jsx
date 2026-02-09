@@ -12,7 +12,7 @@ export default function InsightDetail() {
     return (
       <Page>
         <PageHero eyebrow="Insights" title="Not found" subtitle="This article does not exist." />
-        <div className="mx-auto max-w-6xl px-4 py-10">
+        <div className="mx-auto max-w-6xl px-4 py-10 lg:py-14">
           <Link to="/insights" className="text-sm font-medium text-ink underline">
             Back to Insights
           </Link>

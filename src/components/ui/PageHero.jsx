@@ -3,7 +3,7 @@
 export default function PageHero({ eyebrow, title, subtitle }) {
   return (
     <section className="border-b border-black/10">
-      <div className="mx-auto max-w-6xl px-4 py-12 lg:py-14">
+      <div className="mx-auto max-w-6xl px-4 py-10 lg:py-16">
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
