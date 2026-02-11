@@ -1,50 +1,50 @@
 export const complianceDocs = [
   {
     title: "Taxpayer Identification Number (TPIN)",
-    file: "TPIN - EC.pdf",
-    category: "Tax & Revenue",
-    summary: "Tax registration identifier and official TPIN reference."
+    image: "/compliance/TPIN---EC/TPIN - EC_page-0001.jpg",
+    summary: "Official TPIN registration document.",
+    orientation: "portrait"
   },
   {
     title: "Supplier Registration Confirmation",
-    file: "SupplierRegistrationConfirmation (11).pdf",
-    category: "Commercial Records",
-    summary: "Supplier registration confirmation for procurement and vendor onboarding."
+    image: "/compliance/SupplierRegistrationConfirmation-11/SupplierRegistrationConfirmation (11)_page-0001.jpg",
+    summary: "Supplier registration confirmation for vendor onboarding.",
+    orientation: "portrait"
   },
   {
     title: "Share Capital Certificate",
-    file: "Share Capital Certificate - EC.pdf",
-    category: "Corporate Records",
-    summary: "Share capital allocation and company ownership structure reference."
+    image: "/compliance/Share-Capital-Certificate---EC/Share Capital Certificate - EC_page-0001.jpg",
+    summary: "Share capital and ownership structure certificate.",
+    orientation: "portrait"
   },
   {
-    title: "Income Tax Certificate",
-    file: "Income Tax EC.pdf",
-    category: "Tax & Revenue",
-    summary: "Income tax compliance certificate issued by the relevant authority."
+    title: "Income Tax Certificate (Page 1)",
+    image: "/compliance/Income-Tax-EC/Income Tax EC_page-0001.jpg",
+    summary: "Income tax compliance certificate page 1.",
+    orientation: "portrait"
   },
   {
-    title: "Corporate Profile 2026",
-    file: "ELEVATE CAPITAL 2026.pdf",
-    category: "Corporate Records",
-    summary: "Official 2026 company profile and institutional overview."
+    title: "Income Tax Certificate (Page 2)",
+    image: "/compliance/Income-Tax-EC/Income Tax EC_page-0002.jpg",
+    summary: "Income tax compliance certificate page 2.",
+    orientation: "portrait"
+  },
+  {
+    title: "Employers Compliance Certificate",
+    image: "/compliance/ELEVATE-CAPITAL-2026/ELEVATE CAPITAL 2026_page-0001.jpg",
+    summary: "Employers compliance certificate.",
+    orientation: "landscape"
   },
   {
     title: "Certificate of Incorporation",
-    file: "Certificate of Incorporation - EC.pdf",
-    category: "Corporate Records",
-    summary: "Certificate confirming legal incorporation of the company."
+    image: "/compliance/Elevate-Capital/Elevate Capital_page-0001.jpg",
+    summary: "Certificate confirming legal incorporation.",
+    orientation: "portrait"
   },
   {
-    title: "Company Registration Document",
-    file: "1326100163891-Elevate Capital.pdf",
-    category: "Corporate Records",
-    summary: "Company registration document for legal identity verification."
-  },
-  {
-    title: "Additional Compliance Certificate",
-    file: "1e7c26e9-65a0-46ab-8961-20291a66a030.pdf",
-    category: "Tax & Revenue",
-    summary: "Supplementary compliance certificate issued by the authority."
+    title: "National Pension Scheme Authority (NAPSA)",
+    image: "/compliance/National Pension Scheme Authority/NAPSA.jpg",
+    summary: "National pension scheme authority document.",
+    orientation: "portrait"
   }
 ];
