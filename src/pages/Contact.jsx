@@ -2,9 +2,7 @@ import { Mail } from "lucide-react";
 import Page from "../components/ui/Page.jsx";
 import PageHero from "../components/ui/PageHero.jsx";
 import Section from "../components/ui/Section.jsx";
-import ImageFrame from "../components/ui/ImageFrame.jsx";
 import { brand } from "../data/brand.js";
-import { imagery } from "../data/imagery.js";
 
 export default function Contact() {
   const websiteHref = brand.contact.website.startsWith("http")
@@ -21,15 +19,6 @@ export default function Contact() {
       />
 
       <Section eyebrow="Reach us" title="Contact details">
-        <div className="mb-6 lg:mb-8">
-          <ImageFrame
-            src={imagery.contact.feature.src}
-            alt={imagery.contact.feature.alt}
-            ratio="landscape"
-            imgClassName="object-[center_34%]"
-          />
-        </div>
-
         <div className="rounded-2xl bg-navy-950 px-6 py-8 text-white lg:px-10 lg:py-10">
           <div className="grid gap-8 lg:grid-cols-3">
             <Item label="Phone" value={brand.contact.phone} href={`tel:${brand.contact.phone.replace(/\s+/g, "")}`} />

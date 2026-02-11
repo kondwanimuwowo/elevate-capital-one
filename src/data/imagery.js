@@ -5,7 +5,7 @@ export const imagery = {
       alt: ""
     },
     feature: {
-      src: "/images/hero.jpg",
+      src: "/images/hero1.jpg",
       alt: "Elevate Capital hero image."
     },
     secondary: {
@@ -25,7 +25,7 @@ export const imagery = {
   },
   businessModel: {
     feature: {
-      src: "/images/pexels-masoodaslami-19969248.jpg",
+      src: "/images/hero1.jpg",
       alt: "Financial charts and analytics documents on a desk."
     }
   },

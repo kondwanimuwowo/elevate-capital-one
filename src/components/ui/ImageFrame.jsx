@@ -9,9 +9,7 @@ export default function ImageFrame({
 }) {
   const ratios = {
     landscape: "aspect-[4/3]",
-    wide: "aspect-[16/9]",
-    portrait: "aspect-[3/4]",
-    square: "aspect-square"
+    portrait: "aspect-square"
   };
 
   return (
