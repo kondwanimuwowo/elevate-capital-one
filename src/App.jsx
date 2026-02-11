@@ -7,11 +7,13 @@ import About from "./pages/About.jsx";
 import BusinessModel from "./pages/BusinessModel.jsx";
 import Services from "./pages/Services.jsx";
 import RiskCompliance from "./pages/RiskCompliance.jsx";
+import Compliance from "./pages/Compliance.jsx";
 import Impact from "./pages/Impact.jsx";
 import Insights from "./pages/Insights.jsx";
 import InsightDetail from "./pages/InsightDetail.jsx";
 import Contact from "./pages/Contact.jsx";
 import NotFound from "./pages/NotFound.jsx";
+import { brand } from "./data/brand.js";
 export default function App() {
   const location = useLocation();
 
@@ -24,6 +26,7 @@ export default function App() {
       "/business-model": "Business Model",
       "/services": "Services",
       "/risk-compliance": "Risk & Compliance",
+      "/compliance": "Compliance Documents",
       "/impact": "Impact",
       "/insights": "Insights",
       "/contact": "Contact"
@@ -32,7 +35,7 @@ export default function App() {
     const pageTitle =
       location.pathname.startsWith("/insights/") ? "Insight" : pageTitles[location.pathname] || "Page";
 
-    document.title = `${pageTitle} | Elevate Capital`;
+    document.title = `${pageTitle} | ${brand.name}`;
   }, [location.pathname]);
 
   return (
@@ -44,6 +47,7 @@ export default function App() {
           <Route path="business-model" element={<BusinessModel />} />
           <Route path="services" element={<Services />} />
           <Route path="risk-compliance" element={<RiskCompliance />} />
+          <Route path="compliance" element={<Compliance />} />
           <Route path="impact" element={<Impact />} />
           <Route path="insights" element={<Insights />} />
           <Route path="insights/:slug" element={<InsightDetail />} />

@@ -1,4 +1,5 @@
 import { brand } from "../../data/brand.js";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   const websiteHref = brand.contact.website.startsWith("http")
@@ -10,10 +11,16 @@ export default function Footer() {
       <div className="mx-auto max-w-6xl px-4 py-10">
         <div className="grid gap-8 lg:grid-cols-3">
           <div>
-            <div className="text-sm font-semibold text-navy-950">{brand.name}</div>
-            <div className="mt-2 text-sm text-ink/70">
-              {brand.taglineTop} {brand.taglineBottom}
-            </div>
+            <img
+              src="/elevate-logo.png"
+              alt="Elevate Capital logo"
+              className="h-11 w-auto object-contain"
+              loading="lazy"
+              decoding="async"
+            />
+            <Link className="mt-3 inline-block text-sm text-ink/80 hover:text-ink" to="/compliance">
+              Compliance Documents
+            </Link>
           </div>
 
           <div className="text-sm text-ink/70">
