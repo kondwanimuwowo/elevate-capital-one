@@ -13,6 +13,7 @@ import Insights from "./pages/Insights.jsx";
 import InsightDetail from "./pages/InsightDetail.jsx";
 import Contact from "./pages/Contact.jsx";
 import NotFound from "./pages/NotFound.jsx";
+import ReadinessSimulator from "./pages/ReadinessSimulator.jsx";
 import { brand } from "./data/brand.js";
 import { insights } from "./data/insights.js";
 
@@ -63,6 +64,11 @@ const pageSeo = {
     title: "Contact",
     description:
       "Get in touch with Elevate Capital for partnerships, inquiries, and funding discussions."
+  },
+  "/simulator": {
+    title: "Capital Readiness Simulator",
+    description:
+      "Run the interactive readiness simulator to get a funding structure recommendation, risk heatmap, and action plan."
   }
 };
 
@@ -148,6 +154,7 @@ export default function App() {
           <Route path="impact" element={<Impact />} />
           <Route path="insights" element={<Insights />} />
           <Route path="insights/:slug" element={<InsightDetail />} />
+          <Route path="simulator" element={<ReadinessSimulator />} />
           <Route path="contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />
         </Route>

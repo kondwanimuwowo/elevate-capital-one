@@ -16,6 +16,7 @@ export const nav = [
       { label: "Compliance Documents", to: "/compliance" }
     ]
   },
+  { label: "Simulator", to: "/simulator" },
   { label: "Insights", to: "/insights" },
   { label: "Contact", to: "/contact" }
 ];

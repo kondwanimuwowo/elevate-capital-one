@@ -87,6 +87,12 @@ export default function Home() {
                   Explore Services
                 </Link>
                 <Link
+                  to="/simulator"
+                  className="rounded-full bg-gold-500 px-5 py-2.5 text-sm font-medium text-navy-950 hover:bg-gold-600 transition"
+                >
+                  Try Readiness Simulator
+                </Link>
+                <Link
                   to="/contact"
                   className="rounded-full border border-black/15 px-5 py-2.5 text-sm font-medium text-ink hover:border-black/25 transition"
                 >
