@@ -9,3 +9,6 @@ yarn-error.log*
 pnpm-debug.log*
 .env
 .env.*
+tmp_pdf_extract/
+profile_extracted.txt
+profile_by_page.txt
