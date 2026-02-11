@@ -85,7 +85,7 @@ export default function Header() {
                   </button>
 
                   <div className="pointer-events-none invisible absolute left-0 top-full z-50 pt-3 opacity-0 transition duration-150 group-hover:pointer-events-auto group-hover:visible group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:visible group-focus-within:opacity-100">
-                    <div className="min-w-[220px] rounded-xl border border-black/10 bg-white p-2 shadow-soft">
+                    <div className="min-w-[220px] space-y-1 rounded-xl border border-black/10 bg-white p-2 shadow-soft">
                       {item.children.map((child) => (
                         <NavLink
                           key={child.to}
@@ -132,7 +132,7 @@ export default function Header() {
             transition={{ duration: 0.22, ease: "easeOut" }}
           >
             <motion.nav
-              className="mx-auto flex max-w-6xl flex-col gap-1"
+              className="mx-auto flex max-w-6xl flex-col gap-2"
               initial="hidden"
               animate="visible"
               variants={{
@@ -188,14 +188,14 @@ export default function Header() {
                         <span className="text-ink/50">+</span>
                       </span>
                     </summary>
-                    <div className="px-2 pb-2">
+                    <div className="space-y-1 px-2 pb-2">
                       {item.children.map((child) => (
                         <NavLink
                           key={child.to}
                           to={child.to}
                           className={({ isActive }) =>
                             [
-                              "mt-1 block rounded-lg px-3 py-2 text-sm transition",
+                              "block rounded-lg px-3 py-2 text-sm transition",
                               isActive ? "bg-navy-950 text-white" : "text-ink/80 hover:bg-black/5 hover:text-ink"
                             ].join(" ")
                           }
