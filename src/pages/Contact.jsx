@@ -1,13 +1,41 @@
 import { Mail } from "lucide-react";
+import { useState } from "react";
 import Page from "../components/ui/Page.jsx";
 import PageHero from "../components/ui/PageHero.jsx";
 import Section from "../components/ui/Section.jsx";
 import { brand } from "../data/brand.js";
 
 export default function Contact() {
+  const [submitState, setSubmitState] = useState("idle");
+  const [submitMessage, setSubmitMessage] = useState("");
+
   const websiteHref = brand.contact.website.startsWith("http")
     ? brand.contact.website
     : `https://${brand.contact.website}`;
+
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    const formData = new FormData(event.currentTarget);
+    const name = String(formData.get("name") || "").trim();
+    const email = String(formData.get("email") || "").trim();
+    const message = String(formData.get("message") || "").trim();
+
+    if (!name || !email || !message) {
+      setSubmitState("error");
+      setSubmitMessage("Please complete all fields before sending your message.");
+      return;
+    }
+
+    const subject = `Website enquiry from ${name}`;
+    const body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
+    const mailtoHref = `mailto:${brand.contact.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    window.location.href = mailtoHref;
+    event.currentTarget.reset();
+    setSubmitState("success");
+    setSubmitMessage("Your email app should open now. If it doesn't, contact us directly by email.");
+  }
 
   return (
     <Page>
@@ -37,13 +65,14 @@ export default function Contact() {
               </p>
             </div>
 
-            <form onSubmit={(e) => e.preventDefault()} className="rounded-2xl bg-white/5 p-6">
+            <form onSubmit={handleSubmit} className="rounded-2xl bg-white/5 p-6">
               <label htmlFor="contact-name" className="block text-xs uppercase tracking-[0.16em] text-white/60">
                 Full name
                 <input
                   id="contact-name"
                   name="name"
                   type="text"
+                  required
                   className="mt-2 w-full rounded-xl border border-white/15 bg-transparent px-4 py-3 text-sm text-white placeholder:text-white/40 outline-none focus:border-white/30"
                   placeholder="Your name"
                 />
@@ -55,6 +84,7 @@ export default function Contact() {
                   id="contact-email"
                   name="email"
                   type="email"
+                  required
                   className="mt-2 w-full rounded-xl border border-white/15 bg-transparent px-4 py-3 text-sm text-white placeholder:text-white/40 outline-none focus:border-white/30"
                   placeholder="you@email.com"
                 />
@@ -66,6 +96,7 @@ export default function Contact() {
                   id="contact-message"
                   name="message"
                   rows={4}
+                  required
                   className="mt-2 w-full rounded-xl border border-white/15 bg-transparent px-4 py-3 text-sm text-white placeholder:text-white/40 outline-none focus:border-white/30"
                   placeholder="How can we help?"
                 />
@@ -77,6 +108,18 @@ export default function Contact() {
               >
                 Send message
               </button>
+
+              {submitState !== "idle" ? (
+                <p
+                  className={
+                    submitState === "error"
+                      ? "mt-3 text-xs text-red-300"
+                      : "mt-3 text-xs text-white/75"
+                  }
+                >
+                  {submitMessage}
+                </p>
+              ) : null}
             </form>
           </div>
         </div>

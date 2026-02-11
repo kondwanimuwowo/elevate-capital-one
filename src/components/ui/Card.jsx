@@ -1,13 +1,12 @@
-﻿export default function Card({ title, text, tone = "light" }) {
-  const base =
-    "rounded-2xl border border-black/10 p-6 shadow-soft";
-  const styles =
-    tone === "dark"
-      ? "bg-navy-950 text-white border-white/10"
-      : "bg-white text-ink";
+import { motion } from "framer-motion";
+import { fadeUp } from "../../lib/motion.js";
+
+export default function Card({ title, text, tone = "light" }) {
+  const base = "rounded-2xl border border-black/10 p-6 shadow-soft";
+  const styles = tone === "dark" ? "bg-navy-950 text-white border-white/10" : "bg-white text-ink";
 
   return (
-    <div className={`${base} ${styles}`}>
+    <motion.div {...fadeUp(0)} className={`${base} ${styles}`} transition={{ duration: 0.28 }}>
       <div className={tone === "dark" ? "text-sm font-semibold" : "text-sm font-semibold text-navy-900"}>
         {title}
       </div>
@@ -15,6 +14,6 @@
       <div className={tone === "dark" ? "mt-4 text-[14px] leading-6 text-white/75" : "mt-4 text-[14px] leading-6 text-ink/70"}>
         {text}
       </div>
-    </div>
+    </motion.div>
   );
 }

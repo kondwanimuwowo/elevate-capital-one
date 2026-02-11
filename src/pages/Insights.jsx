@@ -6,6 +6,7 @@ import Section from "../components/ui/Section.jsx";
 import ImageFrame from "../components/ui/ImageFrame.jsx";
 import { insights } from "../data/insights.js";
 import { imagery } from "../data/imagery.js";
+import { formatDisplayDate } from "../lib/date.js";
 
 export default function Insights() {
   return (
@@ -47,7 +48,7 @@ export default function Insights() {
                     className="rounded-2xl border border-black/10 bg-white p-6 shadow-soft transition hover:border-black/20"
                   >
                     <div className="text-xs uppercase tracking-[0.16em] text-ink/50">
-                      {new Date(p.date).toLocaleDateString()}
+                      {formatDisplayDate(p.date)}
                     </div>
                     <div className="mt-3 text-lg font-semibold text-navy-900">{p.title}</div>
                     <div className="mt-3 h-[2px] w-10 bg-gold-500" />

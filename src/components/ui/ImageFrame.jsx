@@ -1,3 +1,6 @@
+import { motion } from "framer-motion";
+import { fadeUp } from "../../lib/motion.js";
+
 export default function ImageFrame({
   src,
   alt,
@@ -13,7 +16,7 @@ export default function ImageFrame({
   };
 
   return (
-    <figure className={["image-frame", className].join(" ").trim()}>
+    <motion.figure {...fadeUp(0)} className={["image-frame", className].join(" ").trim()} transition={{ duration: 0.3 }}>
       <div className={["overflow-hidden", ratios[ratio] || ratios.landscape].join(" ")}>
         <img
           src={src}
@@ -23,6 +26,6 @@ export default function ImageFrame({
         />
       </div>
       {caption ? <figcaption className="image-frame-caption">{caption}</figcaption> : null}
-    </figure>
+    </motion.figure>
   );
 }

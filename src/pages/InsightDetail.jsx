@@ -4,6 +4,7 @@ import Page from "../components/ui/Page.jsx";
 import PageHero from "../components/ui/PageHero.jsx";
 import Section from "../components/ui/Section.jsx";
 import { insights } from "../data/insights.js";
+import { formatDisplayDate } from "../lib/date.js";
 
 export default function InsightDetail() {
   const { slug } = useParams();
@@ -28,7 +29,7 @@ export default function InsightDetail() {
       <PageHero
         eyebrow="Insights"
         title={post.title}
-        subtitle={new Date(post.date).toLocaleDateString()}
+        subtitle={formatDisplayDate(post.date)}
         icon={BookOpen}
       />
 

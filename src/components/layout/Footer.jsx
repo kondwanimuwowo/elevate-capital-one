@@ -47,12 +47,8 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 flex flex-wrap items-center justify-between gap-3 text-xs text-ink/60">
+        <div className="mt-10 text-xs text-ink/60">
           <div>&copy; {new Date().getFullYear()} {brand.name}. All rights reserved.</div>
-          <div className="flex items-center gap-2">
-            <span className="h-1 w-1 rounded-full bg-ink/30" />
-            <span>Built for clarity and performance</span>
-          </div>
         </div>
       </div>
     </footer>
